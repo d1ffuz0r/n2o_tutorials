@@ -11,4 +11,6 @@ init(State, Ctx) ->
 
 route_prefix(P) -> route(P).
 
-route(_) -> index.
+route(<<"/erlydtl_page">>) -> erlydtl_page; 
+route(<<"/n2o_page">>) -> n2o_page;
+route(_)          -> index.

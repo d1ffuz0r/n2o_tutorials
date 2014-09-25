@@ -30,6 +30,8 @@ init([]) ->
 rules() ->
   cowboy_router:compile(
     [{'_', [
+       {"/example", cowboy_static, {priv_file, web, "example.html",
+                                    [{mimetypes, {<<"text">>, <<"html">>, []}}]}},
        {'_', n2o_cowboy, []}
      ]}]
   ).
