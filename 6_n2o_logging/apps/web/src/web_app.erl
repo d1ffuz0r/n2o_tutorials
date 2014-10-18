@@ -13,6 +13,7 @@ start() ->
   application:ensure_all_started(web),
   application:set_env(n2o, route, routes),
   application:set_env(n2o, log_modules, web_sup),
+  application:set_env(n2o, log_backend, n2o_lager),
   application:start(web).
 
 start(_StartType, _StartArgs) ->
