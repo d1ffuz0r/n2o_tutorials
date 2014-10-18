@@ -8,6 +8,8 @@
 %% Supervisor callbacks
 -export([init/1]).
 
+-export([log_modules/0]).
+
 %% Helper macro for declaring children of supervisor
 -define(CHILD(I, Type), {I, {I, start_link, []}, permanent, 5000, Type, [I]}).
 
@@ -26,6 +28,9 @@ init([]) ->
     {ok, _} = cowboy:start_http(http, 3, [{port, 9002}],
                                          [{env, [{dispatch, rules()}]}]),
     {ok, { {one_for_one, 5, 10}, []} }.
+
+log_modules() ->
+    [index].
 
 rules() ->
   cowboy_router:compile(
